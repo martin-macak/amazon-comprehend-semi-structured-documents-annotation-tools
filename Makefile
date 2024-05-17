@@ -42,10 +42,10 @@ clean:
 
 # Use this command after checking out the package to install tools and dependencies from pipfile.lock
 bootstrap:
-	$(PYTHON) -m $(PIP) install aws-sam-cli
-	$(PYTHON) -m $(PIP) install pipenv
-	$(PYTHON) -m $(PIP) install awscli 
-	$(PYTHON) -m pipenv sync -d # Install locked dependencies
+	PIP_CONSTRAINT=src/constraint.txt $(PYTHON) -m $(PIP) install aws-sam-cli
+	PIP_CONSTRAINT=src/constraint.txt $(PYTHON) -m $(PIP) install pipenv
+	PIP_CONSTRAINT=src/constraint.txt $(PYTHON) -m $(PIP) install awscli 
+	PIP_CONSTRAINT=src/constraint.txt $(PYTHON) -m pipenv sync -d # Install locked dependencies
 
 # Activate
 activate:
